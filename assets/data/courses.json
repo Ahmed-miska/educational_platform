@@ -1,0 +1,60 @@
+{
+  "courses": [
+    {
+      "id": "anatomy-101",
+      "title": { "ar": "مقدمة في التشريح", "en": "Introduction to Anatomy" },
+      "instructor": { "ar": "د. سارة", "en": "Dr. Sarah" },
+      "thumbnail": "assets/images/anatomy.png",
+      "sections": [
+        {
+          "id": "anatomy-101-s1",
+          "title": { "ar": "الجهاز الهيكلي", "en": "The Skeletal System" },
+          "lessons": [
+            { "id": "anatomy-101-l1", "title": { "ar": "العظام", "en": "Bones" }, "durationSec": 30, "video": "assets/videos/lesson1.mp4" },
+            { "id": "anatomy-101-l2", "title": { "ar": "المفاصل", "en": "Joints" }, "durationSec": 40, "video": "assets/videos/lesson2.mp4" }
+          ]
+        },
+        {
+          "id": "anatomy-101-s2",
+          "title": { "ar": "الجهاز العضلي", "en": "The Muscular System" },
+          "lessons": [
+            { "id": "anatomy-101-l3", "title": { "ar": "أنواع العضلات", "en": "Types of Muscle" }, "durationSec": 50, "video": "assets/videos/lesson3.mp4" },
+            { "id": "anatomy-101-l4", "title": { "ar": "انقباض العضلات", "en": "Muscle Contraction" }, "durationSec": 30, "video": "assets/videos/lesson1.mp4" },
+            { "id": "anatomy-101-l5", "title": { "ar": "الأوتار والأربطة", "en": "Tendons and Ligaments" }, "durationSec": 40, "video": "assets/videos/lesson2.mp4" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physiology-101",
+      "title": { "ar": "أساسيات علم وظائف الأعضاء", "en": "Physiology Fundamentals" },
+      "instructor": { "ar": "د. أحمد", "en": "Dr. Ahmed" },
+      "thumbnail": "assets/images/physiology.png",
+      "sections": [
+        {
+          "id": "physiology-101-s1",
+          "title": { "ar": "القلب والدورة الدموية", "en": "Heart and Circulation" },
+          "lessons": [
+            { "id": "physiology-101-l1", "title": { "ar": "كيف ينبض القلب", "en": "How the Heart Beats" }, "durationSec": 40, "video": "assets/videos/lesson2.mp4" },
+            { "id": "physiology-101-l2", "title": { "ar": "ضغط الدم", "en": "Blood Pressure" }, "durationSec": 50, "video": "assets/videos/lesson3.mp4" }
+          ]
+        },
+        {
+          "id": "physiology-101-s2",
+          "title": { "ar": "الجهاز التنفسي", "en": "The Respiratory System" },
+          "lessons": [
+            { "id": "physiology-101-l3", "title": { "ar": "تبادل الغازات", "en": "Gas Exchange" }, "durationSec": 30, "video": "assets/videos/lesson1.mp4" },
+            { "id": "physiology-101-l4", "title": { "ar": "التحكم في التنفس", "en": "Control of Breathing" }, "durationSec": 45, "video": "assets/videos/missing_lesson.mp4" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pharmacology-101",
+      "title": { "ar": "مبادئ علم الأدوية", "en": "Principles of Pharmacology" },
+      "instructor": { "ar": "د. ليلى", "en": "Dr. Layla" },
+      "thumbnail": "assets/images/pharmacology.png",
+      "sections": []
+    }
+  ]
+}
