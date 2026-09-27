@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
 
-class ColorsApp {
-  ColorsApp._();
+import 'app_colors.dart';
 
-  static const Color lightMainColor = Color(0xFF0F6E8C);
-  static const Color lightSecondColor = Color(0xFFE0F2F7);
-  static const Color lightWhite = Color(0xFFFFFFFF);
-  static const Color lightDark = Color(0xFF0B1B24);
-  static const Color lightBodyBG = Color(0xFFF5F8FA);
+class AppColors {
+  AppColors._();
 
-  static const Color darkMainColor = Color(0xFF4FB3CF);
-  static const Color darkSecondColor = Color(0xFF123846);
-  static const Color darkWhite = Color(0xFF14212A);
-  static const Color darkDark = Color(0xFFEAF2F5);
-  static const Color darkBodyBG = Color(0xFF0B141A);
+  static bool _isLight(BuildContext context) => Theme.of(context).brightness == Brightness.light;
 
-  static const Color green = Color(0xFF1FA35B);
-  static const Color amber = Color(0xFFE09A1B);
-  static const Color error = Color(0xFFD64545);
+  static Color mainColor(BuildContext context) => _isLight(context) ? ColorsApp.lightMainColor : ColorsApp.darkMainColor;
+
+  static Color secondColor(BuildContext context) => _isLight(context) ? ColorsApp.lightSecondColor : ColorsApp.darkSecondColor;
+
+  static Color darkColor(BuildContext context) => _isLight(context) ? ColorsApp.lightDark : ColorsApp.darkDark;
+
+  static Color gray(BuildContext context) => darkColor(context).withValues(alpha: .65);
+
+  static Color grayLight(BuildContext context) => darkColor(context).withValues(alpha: .4);
+
+  static Color stroke(BuildContext context) => darkColor(context).withValues(alpha: .08);
+
+  static Color white(BuildContext context) => _isLight(context) ? ColorsApp.lightWhite : ColorsApp.darkWhite;
+
+  static Color bodyBG(BuildContext context) => _isLight(context) ? ColorsApp.lightBodyBG : ColorsApp.darkBodyBG;
+
+  static Color error(BuildContext context) => ColorsApp.error;
+  static Color completedStatus(BuildContext context) => ColorsApp.green;
+  static Color inProgressStatus(BuildContext context) => ColorsApp.amber;
 }
