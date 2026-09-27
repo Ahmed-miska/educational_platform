@@ -4,7 +4,7 @@ import '../../../../core/dimens/dimens.dart';
 import '../../../../core/resources/app_translate.dart';
 import '../../../../core/resources/font_size.dart';
 import '../../../../core/utils/functions.dart';
-import '../../../../core/app_theme/colors_theme.dart';
+import '../../../../core/app_theme/app_colors.dart';
 import '../../../../data/models/continue_watching_model.dart';
 import '../../../components/custom_text/custom_text.dart';
 import '../../../components/progress/app_progress_bar.dart';

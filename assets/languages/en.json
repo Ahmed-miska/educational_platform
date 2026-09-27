@@ -27,7 +27,7 @@
   "lessonLockedMessage": "This lesson is locked 🔒 Finish \"{}\" first to unlock it.",
   "lessonLockedTitle": "This lesson isn't available yet",
   "nextLesson": "Next lesson",
-  "finishLessonFirst": "Watch 90% of this lesson to unlock the next one",
+  "finishLessonFirst": "Watch {}% of this lesson to unlock the next one",
   "lastLesson": "This is the last lesson of the course",
   "courseFinished": "Well done! You finished every lesson in this course 🎉",
   "lessonCompleted": "Nice work! Lesson completed ✅",

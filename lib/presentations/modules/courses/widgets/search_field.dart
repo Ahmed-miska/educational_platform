@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/app_theme/colors_theme.dart';
+import '../../../../core/app_theme/app_colors.dart';
 import '../../../../core/dimens/dimens.dart';
 import '../../../../core/resources/app_translate.dart';
 import '../courses_view_model.dart';
@@ -20,6 +20,7 @@ class SearchField extends StatelessWidget {
         return TextField(
           controller: viewModel.searchController,
           textInputAction: TextInputAction.search,
+          onChanged: viewModel.onSearchChanged,
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
           decoration: InputDecoration(
             hintText: AppTranslate.searchCourses,

@@ -39,7 +39,7 @@ class AppTranslate {
   static String lessonLockedMessage(String previousLesson) => _tr('lessonLockedMessage', args: [previousLesson]);
   static String get lessonLockedTitle => _tr('lessonLockedTitle');
   static String get nextLesson => _tr('nextLesson');
-  static String get finishLessonFirst => _tr('finishLessonFirst');
+  static String finishLessonFirst(int percent) => _tr('finishLessonFirst', args: ['$percent']);
   static String get lastLesson => _tr('lastLesson');
   static String get courseFinished => _tr('courseFinished');
   static String get lessonCompleted => _tr('lessonCompleted');

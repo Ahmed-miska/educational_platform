@@ -10,6 +10,7 @@ class CourseModel {
   final List<SectionModel> sections;
 
   final List<LessonModel> lessons;
+  late final List<String> lessonIds = List.unmodifiable(lessons.map((e) => e.id));
 
   CourseModel({required this.id, required this.title, required this.instructor, required this.thumbnail, required this.sections})
     : lessons = List.unmodifiable(sections.expand((s) => s.lessons));
@@ -25,8 +26,6 @@ class CourseModel {
       sections: (json['sections'] as List? ?? []).map((e) => SectionModel.fromJson(e as Map<String, dynamic>)).toList(),
     );
   }
-
-  List<String> get lessonIds => lessons.map((e) => e.id).toList();
 
   LessonModel? lessonById(String lessonId) {
     for (final lesson in lessons) {

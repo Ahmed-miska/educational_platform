@@ -23,17 +23,18 @@ class LessonPlayerViewModel with ChangeNotifier, WidgetsBindingObserver {
   final ProgressViewModel _progressViewModel;
   final LocalUserData _localUserData;
 
-  LessonPlayerViewModel({ProgressViewModel? progressViewModel, LocalUserData? localUserData})
+  LessonPlayerViewModel({required this.course, required this.lesson, ProgressViewModel? progressViewModel, LocalUserData? localUserData})
     : _progressViewModel = progressViewModel ?? getIt(),
       _localUserData = localUserData ?? getIt() {
     _playbackSpeed = _localUserData.getPlaybackSpeed();
+    WidgetsBinding.instance.addObserver(this);
+    _loadVideo();
   }
 
-  late CourseModel course;
-  late LessonModel lesson;
+  final CourseModel course;
+  final LessonModel lesson;
 
   VideoPlayerController? _controller;
-  bool _isLoading = true;
   bool _isError = false;
   bool _isFullScreen = false;
   bool _isDisposed = false;
@@ -46,7 +47,7 @@ class LessonPlayerViewModel with ChangeNotifier, WidgetsBindingObserver {
 
   VideoPlayerController? get controller => _controller;
   VideoPlayerValue get _value => _controller?.value ?? const VideoPlayerValue.uninitialized();
-  bool get isLoading => _isLoading || _controller == null;
+  bool get isLoading => _controller == null;
   bool get isError => _isError;
   bool get isFullScreen => _isFullScreen;
   double get playbackSpeed => _playbackSpeed;
@@ -62,6 +63,8 @@ class LessonPlayerViewModel with ChangeNotifier, WidgetsBindingObserver {
   }
 
   String nextLessonTitle(String languageCode) => '${AppTranslate.nextLesson}: ${nextLesson?.title.of(languageCode) ?? ''}';
+
+  String get finishLessonFirstMessage => AppTranslate.finishLessonFirst((ProgressRules.completionThreshold * 100).round());
 
   bool get isControlsVisible => _isControlsVisible || !_value.isPlaying;
   double get durationMs => math.max(_value.duration.inMilliseconds, 1).toDouble();
@@ -81,15 +84,7 @@ class LessonPlayerViewModel with ChangeNotifier, WidgetsBindingObserver {
 
   String speedLabel(double speed) => '${speed == speed.roundToDouble() ? speed.toInt() : speed}x';
 
-  void init({required CourseModel course, required LessonModel lesson}) {
-    this.course = course;
-    this.lesson = lesson;
-    WidgetsBinding.instance.addObserver(this);
-    _loadVideo();
-  }
-
   Future<void> _loadVideo() async {
-    _isLoading = true;
     _isError = false;
     notifyListeners();
 
@@ -105,7 +100,6 @@ class LessonPlayerViewModel with ChangeNotifier, WidgetsBindingObserver {
       debugPrint('Failed to load ${lesson.video}: $e');
       await controller.dispose();
       if (_isDisposed) return;
-      _isLoading = false;
       _isError = true;
       notifyListeners();
       return;
@@ -117,7 +111,6 @@ class LessonPlayerViewModel with ChangeNotifier, WidgetsBindingObserver {
     }
     controller.addListener(_onPlayerValueChanged);
     _controller = controller;
-    _isLoading = false;
     _isControlsVisible = true;
     notifyListeners();
     hideControlsLater();
@@ -205,7 +198,6 @@ class LessonPlayerViewModel with ChangeNotifier, WidgetsBindingObserver {
     await _seekTo(Duration(milliseconds: positionMs.round()));
     _dragPositionMs = null;
     notifyListeners();
-    hideControlsLater();
   }
 
   Future<void> _seekTo(Duration position) async {
@@ -239,7 +231,7 @@ class LessonPlayerViewModel with ChangeNotifier, WidgetsBindingObserver {
     if (canOpenNextLesson) {
       NavigatorHandler.replaceWithLesson(course.id, nextLesson!.id);
     } else {
-      showMessage(AppTranslate.finishLessonFirst);
+      showMessage(finishLessonFirstMessage);
     }
   }
 
@@ -278,7 +270,6 @@ class LessonPlayerViewModel with ChangeNotifier, WidgetsBindingObserver {
       case AppLifecycleState.hidden:
       case AppLifecycleState.paused:
         _controller?.pause();
-        _saveProgress();
       case AppLifecycleState.resumed:
       case AppLifecycleState.detached:
         break;

@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/app_theme/colors_theme.dart';
+import '../../../core/app_theme/app_colors.dart';
 import '../../../core/app_theme/theme_manager.dart';
 import '../../../core/constants/constants.dart';
 import '../../../core/dimens/dimens.dart';
@@ -53,8 +53,8 @@ class SettingsSheet extends StatelessWidget {
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
-                  leading: Icon(Icons.restart_alt_rounded, color: AppColors.error(context)),
-                  title: CustomText(title: AppTranslate.resetProgress, fontColor: AppColors.error(context)),
+                  leading: Icon(Icons.restart_alt_rounded, color: AppColors.error),
+                  title: CustomText(title: AppTranslate.resetProgress, fontColor: AppColors.error),
                   onTap: () => showDialog(context: context, builder: (_) => const ResetProgressDialog()),
                 ),
               ],

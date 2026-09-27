@@ -15,9 +15,10 @@ import '../../injection.dart';
 class ProgressViewModel with ChangeNotifier {
   final ProgressRepository _progressRepository;
   late Map<String, LessonProgressModel> _progress;
+  late Set<String> _completedLessonIds;
 
   ProgressViewModel({ProgressRepository? progressRepository}) : _progressRepository = progressRepository ?? getIt() {
-    _progress = _progressRepository.getAllProgress();
+    _setProgress(_progressRepository.getAllProgress());
   }
 
   LessonProgressModel? progressOf(String lessonId) => _progress[lessonId];
@@ -26,7 +27,7 @@ class ProgressViewModel with ChangeNotifier {
 
   bool isCompleted(String lessonId) => _progress[lessonId]?.isCompleted ?? false;
 
-  Set<String> get completedLessonIds => _progress.values.where((e) => e.isCompleted).map((e) => e.lessonId).toSet();
+  Set<String> get completedLessonIds => _completedLessonIds;
 
   bool isUnlocked(CourseModel course, String lessonId) =>
       ProgressRules.isUnlocked(orderedLessonIds: course.lessonIds, lessonId: lessonId, completedLessonIds: completedLessonIds);
@@ -57,7 +58,7 @@ class ProgressViewModel with ChangeNotifier {
   Future<bool> savePosition({required String courseId, required String lessonId, required Duration position, required Duration duration}) async {
     final wasCompleted = isCompleted(lessonId);
     final isCompletedNow = wasCompleted || ProgressRules.reachedCompletion(position: position, duration: duration);
-    _progress = {
+    _setProgress({
       ..._progress,
       lessonId: LessonProgressModel(
         lessonId: lessonId,
@@ -67,14 +68,14 @@ class ProgressViewModel with ChangeNotifier {
         isCompleted: isCompletedNow,
         updatedAt: DateTime.now(),
       ),
-    };
+    });
     _notifySafely();
     await _progressRepository.saveAllProgress(_progress);
     return isCompletedNow && !wasCompleted;
   }
 
   Future<void> resetProgress() async {
-    _progress = {};
+    _setProgress({});
     _notifySafely();
     await _progressRepository.clearProgress();
   }
@@ -83,6 +84,11 @@ class ProgressViewModel with ChangeNotifier {
     NavigatorHandler.backToHome();
     await resetProgress();
     showMessage(AppTranslate.progressCleared);
+  }
+
+  void _setProgress(Map<String, LessonProgressModel> progress) {
+    _progress = progress;
+    _completedLessonIds = progress.values.where((e) => e.isCompleted).map((e) => e.lessonId).toSet();
   }
 
   void _notifySafely() {

@@ -14,9 +14,7 @@ class CoursesViewModel with ChangeNotifier {
 
   CoursesViewModel({CoursesRepository? coursesRepository, ProgressViewModel? progressViewModel})
     : _coursesRepository = coursesRepository ?? getIt(),
-      _progressViewModel = progressViewModel ?? getIt() {
-    searchController.addListener(notifyListeners);
-  }
+      _progressViewModel = progressViewModel ?? getIt();
 
   final TextEditingController searchController = TextEditingController();
   List<CourseModel> _courses = [];
@@ -72,7 +70,12 @@ class CoursesViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void clearSearch() => searchController.clear();
+  void onSearchChanged(String text) => notifyListeners();
+
+  void clearSearch() {
+    searchController.clear();
+    notifyListeners();
+  }
 
   void openContinueWatching() {
     final item = continueWatching;

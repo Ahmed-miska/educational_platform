@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/app_theme/colors_theme.dart';
 import '../../../core/resources/font_size.dart';
 import '../custom_text/custom_text.dart';
 
@@ -14,7 +13,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.bodyBG(context),
       automaticallyImplyLeading: false,
       leading: isBackButtonExist ? const BackButton() : null,
       titleSpacing: isBackButtonExist ? 0 : null,

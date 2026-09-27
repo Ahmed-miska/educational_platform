@@ -30,7 +30,7 @@
   "lessonLockedMessage": "هذا الدرس مقفل 🔒 أكمل درس «{}» أولًا لفتحه.",
   "lessonLockedTitle": "هذا الدرس غير متاح بعد",
   "nextLesson": "الدرس التالي",
-  "finishLessonFirst": "شاهد 90٪ من هذا الدرس لفتح الدرس التالي",
+  "finishLessonFirst": "شاهد {}٪ من هذا الدرس لفتح الدرس التالي",
   "lastLesson": "هذا آخر درس في الدورة",
   "courseFinished": "أحسنت! أنهيت جميع دروس الدورة 🎉",
   "lessonCompleted": "أحسنت! اكتمل الدرس ✅",

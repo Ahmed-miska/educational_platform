@@ -18,12 +18,10 @@ CourseModel testCourse() => CourseModel(
   thumbnail: '',
   sections: [
     SectionModel(
-      id: 's1',
       title: const LocalizedText(ar: 'القسم الأول'),
       lessons: [lesson('l1'), lesson('l2')],
     ),
     SectionModel(
-      id: 's2',
       title: const LocalizedText(ar: 'القسم الثاني'),
       lessons: [lesson('l3')],
     ),

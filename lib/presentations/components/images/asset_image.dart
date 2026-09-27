@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/app_theme/colors_theme.dart';
+import '../../../core/app_theme/app_colors.dart';
 
 class AppAssetImage extends StatelessWidget {
   final String path;

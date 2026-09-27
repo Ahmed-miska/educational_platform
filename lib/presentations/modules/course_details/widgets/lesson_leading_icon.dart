@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/app_theme/colors_theme.dart';
+import '../../../../core/app_theme/app_colors.dart';
 import '../../../../data/models/enums/lesson_status.dart';
 import '../../../components/custom_text/custom_text.dart';
 
@@ -19,10 +19,10 @@ class LessonLeadingIcon extends StatelessWidget {
       color = AppColors.grayLight(context);
       child = Icon(Icons.lock_rounded, size: 18, color: color);
     } else if (status == LessonStatus.completed) {
-      color = AppColors.completedStatus(context);
+      color = AppColors.completedStatus;
       child = Icon(Icons.check_rounded, size: 20, color: color);
     } else if (status == LessonStatus.inProgress) {
-      color = AppColors.inProgressStatus(context);
+      color = AppColors.inProgressStatus;
       child = Icon(Icons.play_arrow_rounded, size: 20, color: color);
     } else {
       color = AppColors.mainColor(context);

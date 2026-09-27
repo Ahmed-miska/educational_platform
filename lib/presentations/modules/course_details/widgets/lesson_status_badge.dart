@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/app_theme/colors_theme.dart';
+import '../../../../core/app_theme/app_colors.dart';
 import '../../../../core/dimens/dimens.dart';
 import '../../../../core/resources/app_translate.dart';
 import '../../../../core/resources/font_size.dart';
@@ -19,8 +19,8 @@ class LessonStatusBadge extends StatelessWidget {
         ? (AppTranslate.statusLocked, AppColors.grayLight(context))
         : switch (status) {
             LessonStatus.notStarted => (AppTranslate.statusNotStarted, AppColors.gray(context)),
-            LessonStatus.inProgress => (AppTranslate.statusInProgress, AppColors.inProgressStatus(context)),
-            LessonStatus.completed => (AppTranslate.statusCompleted, AppColors.completedStatus(context)),
+            LessonStatus.inProgress => (AppTranslate.statusInProgress, AppColors.inProgressStatus),
+            LessonStatus.completed => (AppTranslate.statusCompleted, AppColors.completedStatus),
           };
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: Dimens.padding8, vertical: 2),

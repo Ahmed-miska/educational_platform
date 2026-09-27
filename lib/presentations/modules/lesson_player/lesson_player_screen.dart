@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/resources/app_translate.dart';
-import '../../../injection.dart';
 import '../../components/custom_app_bar/custom_app_bar.dart';
 import '../../components/custom_scaffold/custom_scaffold.dart';
 import '../../components/error/custom_error_widget.dart';
@@ -21,7 +20,6 @@ class LessonPlayerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppTranslate.languageCode(context);
     return Consumer2<CoursesViewModel, ProgressViewModel>(
       builder: (context, coursesViewModel, progressViewModel, child) {
         if (!coursesViewModel.hasLoaded) {
@@ -47,7 +45,7 @@ class LessonPlayerScreen extends StatelessWidget {
           );
         }
         return ChangeNotifierProvider<LessonPlayerViewModel>(
-          create: (_) => getIt<LessonPlayerViewModel>()..init(course: course, lesson: lesson),
+          create: (_) => LessonPlayerViewModel(course: course, lesson: lesson),
           child: const LessonPlayerView(),
         );
       },

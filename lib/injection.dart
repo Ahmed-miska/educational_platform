@@ -8,7 +8,6 @@ import 'data/datasource/local/progress_local_data.dart';
 import 'data/repos/courses_repository.dart';
 import 'data/repos/progress_repository.dart';
 import 'presentations/modules/courses/courses_view_model.dart';
-import 'presentations/modules/lesson_player/lesson_player_view_model.dart';
 import 'presentations/modules/progress_view_model.dart';
 
 final getIt = GetIt.instance;
@@ -27,5 +26,4 @@ Future<void> init() async {
   getIt.registerLazySingleton(() => ThemeManager());
   getIt.registerLazySingleton(() => CoursesViewModel());
   getIt.registerLazySingleton(() => ProgressViewModel());
-  getIt.registerFactory(() => LessonPlayerViewModel());
 }

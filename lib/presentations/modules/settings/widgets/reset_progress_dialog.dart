@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/app_theme/colors_theme.dart';
+import '../../../../core/app_theme/app_colors.dart';
 import '../../../../core/resources/app_translate.dart';
 import '../../../../core/resources/font_size.dart';
 import '../../../components/custom_text/custom_text.dart';
@@ -18,7 +18,7 @@ class ResetProgressDialog extends StatelessWidget {
         TextButton(onPressed: () => Navigator.pop(context), child: Text(AppTranslate.cancel)),
         TextButton(
           onPressed: () => context.read<ProgressViewModel>().confirmResetProgress(),
-          child: Text(AppTranslate.confirm, style: TextStyle(color: AppColors.error(context))),
+          child: Text(AppTranslate.confirm, style: TextStyle(color: AppColors.error)),
         ),
       ],
     );

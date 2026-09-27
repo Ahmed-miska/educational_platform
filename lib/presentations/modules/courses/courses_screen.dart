@@ -44,12 +44,8 @@ class CoursesScreen extends StatelessWidget {
             children: [
               const SearchField(),
               const SizedBox(height: Dimens.padding16),
-              if (coursesViewModel.continueWatching != null) ...[
-                ContinueWatchingCard(
-                  item: coursesViewModel.continueWatching!,
-                  languageCode: languageCode,
-                  onTap: coursesViewModel.openContinueWatching,
-                ),
+              if (coursesViewModel.continueWatching case final item?) ...[
+                ContinueWatchingCard(item: item, languageCode: languageCode, onTap: coursesViewModel.openContinueWatching),
                 const SizedBox(height: Dimens.padding24),
               ],
               CustomText(title: AppTranslate.allCourses, fontSize: AppFonts.font16, fontWeight: FontWeight.w700),

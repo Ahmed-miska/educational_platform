@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/app_theme/colors_theme.dart';
+import '../../../../core/app_theme/app_colors.dart';
 import '../../../../core/dimens/dimens.dart';
 import '../../../../core/resources/app_translate.dart';
 import '../../../../core/resources/font_size.dart';
@@ -67,12 +67,12 @@ class CourseCard extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: Dimens.padding4),
-                    AppProgressBar(value: progressPercent / 100, color: isCompleted ? AppColors.completedStatus(context) : null),
+                    AppProgressBar(value: progressPercent / 100, color: isCompleted ? AppColors.completedStatus : null),
                     CustomText(
                       title: isCompleted ? AppTranslate.courseCompleted : AppTranslate.completedPercent(progressPercent),
                       fontSize: AppFonts.font12,
                       fontWeight: FontWeight.w500,
-                      fontColor: isCompleted ? AppColors.completedStatus(context) : AppColors.mainColor(context),
+                      fontColor: isCompleted ? AppColors.completedStatus : AppColors.mainColor(context),
                     ),
                   ],
                 ),

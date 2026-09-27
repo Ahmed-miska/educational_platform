@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/app_theme/colors_theme.dart';
+import '../../../core/app_theme/app_colors.dart';
 import '../../../core/dimens/dimens.dart';
 import '../../../core/resources/app_translate.dart';
 import '../../../core/resources/font_size.dart';
@@ -24,7 +24,7 @@ class CustomErrorWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: Dimens.padding12,
           children: [
-            Icon(icon, size: 48, color: color ?? AppColors.error(context)),
+            Icon(icon, size: 48, color: color ?? AppColors.error),
             CustomText(title: message, textAlign: TextAlign.center, fontSize: AppFonts.font14, fontColor: foreground),
             if (onRetry != null)
               TextButton.icon(
